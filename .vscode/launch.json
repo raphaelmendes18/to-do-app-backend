@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Express with ts-node (WSL)",
+      "type": "pwa-node",
+      "request": "launch",
+      "runtimeExecutable": "ts-node",
+      "runtimeArgs": [
+        "--transpile-only"
+      ],
+      "args": [
+        "${workspaceFolder}/src/app.ts" // path to your main file
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    }
+  ]
+}
