@@ -18,16 +18,27 @@ export class TaskService{
         return returnTask;
     }
 
-    // async updateTask(id: string, task: Task): Promise<Task>{
-        
-    // }
+    async updateTask(id: string, task: Task): Promise<Task>{
+        const index = parseInt(id);
+        if(index >= 0 && index < this.tasks.length){
+            this.tasks[index] = task;
+            return task;
+        }else{
+            throw new Error("Task not found");
+        }
+    }
 
-    // async patchTask(id: string, task: Task): Promise<Task>{
-    //     return {
-    //             name: "testa",
-    //             dueDate: "22/04/1993"
-    //         }
-    // }
+    async patchTask(id: string, task: Task): Promise<Task>{
+        const index = parseInt(id);
+        if(index >= 0 && index < this.tasks.length){
+            const oldtask = this.tasks[index];
+            const newtask = {...oldtask, ...task};
+            this.tasks[index] = newtask; 
+            return newtask;    
+        } else {
+            throw new Error("Task not found");
+        }
+    }
 
     async insertTask(task: Task): Promise<Task>{
         this.tasks.push(task);
